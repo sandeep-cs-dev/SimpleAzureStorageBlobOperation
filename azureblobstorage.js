@@ -18,16 +18,12 @@ const ACCOUNT_ACCESS_KEY = process.env.STORAGE_KEY;
 const AS = {};    // Azure Storage
 console.log(STORAGE_ACCOUNT_NAME);
 /*
-// const ONE_MEGABYTE = 1024 * 1024;
-// const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
-// const ONE_MINUTE = 60 * 1000;
-// By default, credential is always the last element of pipeline factories
-// const factories = serviceURL.pipeline.factories;
-//const sharedKeyCredential = factories[factories.length - 1];
-// const containerName = getUniqueName("container");
-//const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
-//const blobName = getUniqueName("blob");
-//const blobURL = BlockBlobURL.fromContainerURL(containerURL,blobName);
+const ONE_MEGABYTE = 1024 * 1024;
+const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
+const ONE_MINUTE = 60 * 1000;
+By default, credential is always the last element of pipeline factories
+const factories = serviceURL.pipeline.factories;
+const sharedKeyCredential = factories[factories.length - 1];
 */
 
 AS.getServiceUrl = () => {
@@ -143,9 +139,9 @@ AS.deleteBlockBlob = (blobName, containerName) => {
 }
 
 AS.downloadBlob = async (blobName, containerName) => {
-    const blockBlobURL = await getBlockBlobUrl(blobName, containerName);
-    const downloadSteeam = blockBlobURL.download(aborter, 0);
-    return downloadSteeam;
+    const blockBlobURL =  await getBlockBlobUrl(blobName, containerName);
+    const downloadStream = await blockBlobURL.download(aborter, 0);
+    return downloadStream;
 }
 
 module.exports = AS;
