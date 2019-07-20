@@ -12,7 +12,6 @@ const {
     AnonymousCredential,
 } = require("@azure/storage-blob");
 
-
 const STORAGE_ACCOUNT_NAME = process.env.STORAGE_ACCOUNT;
 const ACCOUNT_ACCESS_KEY = process.env.STORAGE_KEY;
 const AS = {};    // Azure Storage
